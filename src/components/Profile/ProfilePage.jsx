@@ -1,7 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useApplicationContext} from '../../ApplicationContext';
-import {Button, Grid, List, ListItem, ListItemIcon, ListItemText, TextField, Typography} from '@material-ui/core';
+import {
+    Button,
+    Checkbox,
+    Grid,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    TextField,
+    Typography
+} from '@material-ui/core';
 import SmsIcon from '@material-ui/icons/Sms';
 import EmailIcon from '@material-ui/icons/Email';
 import Unauthorised from '../Unauthorised';
@@ -88,6 +98,7 @@ export default function ProfilePage() {
                         <List component="nav">
                         {editUser.preferences.contact.map(contact =>
                             <ListItem button key={contact} disabled={!editing}>
+                                {editing && <Checkbox edge="start" checked disableRipple />}
                                 <ListItemIcon>
                                     {contact === 'sms' ? <SmsIcon /> : <EmailIcon />}
                                 </ListItemIcon>
