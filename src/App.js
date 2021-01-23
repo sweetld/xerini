@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import AppBody from './components/AppBody';
+import React from 'react';
+import {ApplicationContextProvider} from './ApplicationContext';
+import {BrowserRouter} from 'react-router-dom';
+import MenuBar from './components/MenuBar';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <ApplicationContextProvider>
+                <BrowserRouter>
+                    <MenuBar>
+                    </MenuBar>
+                    <AppBody>
+                    </AppBody>
+                </BrowserRouter>
+            </ApplicationContextProvider>
+        </div>
+    );
 }
 
 export default App;

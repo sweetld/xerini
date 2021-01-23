@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "first_name": "Jon",
+      "other_names": "Williams",
+      "address": {
+        "street": "1 Mill Street",
+        "town": "Northampton",
+        "county": "Northamponshire",
+        "postcode": "NU7 JK8"
+      },
+      "mobile": "08982 92829",
+      "email": "jwlll@gmail.com",
+      "company": "Xerini",
+      "preferences": {
+        "contact": [ "mail", "sms" ]
+      }
+    },
+    {
+      "id": "2",
+      "first_name": "Daud",
+      "other_names": "Sweetland",
+      "address": {
+        "street": "127 High Street",
+        "town": "Silly Town",
+        "county": "London",
+        "postcode": "SE10 8RR"
+      },
+      "mobile": "07698 548 221",
+      "email": "daud.sweetland@gmail.com",
+      "company": "Xerini",
+      "preferences": {
+        "contact": [ "sms" ]
+      }
+    }
+  ]
+}
