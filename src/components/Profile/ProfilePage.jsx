@@ -113,8 +113,8 @@ export default function ProfilePage() {
                     <Grid item xs={8}>
                     </Grid>
                     <Grid item xs={4}>
-                        {editing ? <Button onClick={handleSave} >Save</Button> : <Button onClick={handleEdit} >Edit</Button>}
-                        <Button onClick={handleCancel}>Cancel</Button>
+                        {editing ? <Button color="secondary" onClick={handleSave} >Save</Button> : <Button color="secondary" onClick={handleEdit} >Edit</Button>}
+                        <Button color="primary" onClick={handleCancel}>Cancel</Button>
                     </Grid>
 
                 </Grid>
