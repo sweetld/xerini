@@ -87,7 +87,7 @@ export default function ProfilePage() {
                         <Typography variant="h6" gutterBottom>Contact Preferences</Typography>
                         <List component="nav">
                         {editUser.preferences.contact.map(contact =>
-                            <ListItem button key={contact}>
+                            <ListItem button key={contact} disabled={!editing}>
                                 <ListItemIcon>
                                     {contact === 'sms' ? <SmsIcon /> : <EmailIcon />}
                                 </ListItemIcon>
