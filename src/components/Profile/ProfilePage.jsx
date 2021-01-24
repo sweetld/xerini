@@ -43,14 +43,33 @@ export default function ProfilePage() {
         if (editing) {
             if (type.startsWith("address")) {
                 const parts = type.split(".");
-                setEditUser({...editUser, [parts[0]]: {
-                    ...editUser.address,
-                    [parts[1]] : event.target.value,
-                    }})
+                setEditUser({
+                    ...editUser,
+                    [parts[0]]: {
+                        ...editUser.address,
+                        [parts[1]] : event.target.value,
+                    }
+                });
             } else {
-                setEditUser({...editUser, [type]: event.target.value})
+                setEditUser({...editUser, [type]: event.target.value});
             }
         }
+    }
+
+    const handleContactPrefChange = (type) => {
+        let currentContacts = editUser.preferences.contact;
+        const checked = editUser.preferences.contact.indexOf(type) !== -1;
+        if (checked) {
+            currentContacts = currentContacts.filter(contact => contact !== type);
+        } else {
+            currentContacts.push(type);
+        }
+        setEditUser({
+            ...editUser,
+            preferences: {
+                contact: currentContacts,
+            }
+        });
     }
 
     if (auth) {
@@ -95,14 +114,31 @@ export default function ProfilePage() {
                     </Grid>
                     <Grid item xs={4}>
                         <Typography variant="h6" gutterBottom>Contact Preferences</Typography>
+                        {editing &&
+                            <List component="nav">
+                                <ListItem button key="sms" onClick={() => handleContactPrefChange('sms')} value={editUser.preferences.contact.indexOf('sms') !== -1}>
+                                    <ListItemIcon>
+                                        <SmsIcon/>
+                                    </ListItemIcon>
+                                    <ListItemText primary="SMS"/>
+                                    <Checkbox edge="end" value={editUser.preferences.contact.indexOf('sms') !== -1} checked={editUser.preferences.contact.indexOf('sms') !== -1} disableRipple/>
+                                </ListItem>
+                                <ListItem button key="email" onClick={() => handleContactPrefChange('email') > 0} value={editUser.preferences.contact.indexOf('email') !== -1}>
+                                    <ListItemIcon>
+                                        <EmailIcon/>
+                                    </ListItemIcon>
+                                    <ListItemText primary="Email"/>
+                                    <Checkbox edge="end" value={editUser.preferences.contact.indexOf('email') !== -1} checked={editUser.preferences.contact.indexOf('email') !== -1} disableRipple/>
+                                </ListItem>
+                            </List>
+                        }
                         <List component="nav">
-                        {editUser.preferences.contact.map(contact =>
-                            <ListItem button key={contact} disabled={!editing}>
-                                {editing && <Checkbox edge="start" checked disableRipple />}
+                        {!editing && editUser.preferences.contact.map(contact =>
+                            <ListItem button key={contact} disabled>
                                 <ListItemIcon>
                                     {contact === 'sms' ? <SmsIcon /> : <EmailIcon />}
                                 </ListItemIcon>
-                                <ListItemText primary={contact} />
+                                <ListItemText primary={contact.toUpperCase()} />
                             </ListItem>
                         )}
                         </List>
