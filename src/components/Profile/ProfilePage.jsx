@@ -123,12 +123,12 @@ export default function ProfilePage() {
                                     <ListItemText primary="SMS"/>
                                     <Checkbox edge="end" value={editUser.preferences.contact.indexOf('sms') !== -1} checked={editUser.preferences.contact.indexOf('sms') !== -1} disableRipple/>
                                 </ListItem>
-                                <ListItem button key="email" onClick={() => handleContactPrefChange('email') > 0} value={editUser.preferences.contact.indexOf('email') !== -1}>
+                                <ListItem button key="mail" onClick={() => handleContactPrefChange('mail') > 0} value={editUser.preferences.contact.indexOf('mail') !== -1}>
                                     <ListItemIcon>
                                         <EmailIcon/>
                                     </ListItemIcon>
-                                    <ListItemText primary="Email"/>
-                                    <Checkbox edge="end" value={editUser.preferences.contact.indexOf('email') !== -1} checked={editUser.preferences.contact.indexOf('email') !== -1} disableRipple/>
+                                    <ListItemText primary="Mail"/>
+                                    <Checkbox edge="end" value={editUser.preferences.contact.indexOf('mail') !== -1} checked={editUser.preferences.contact.indexOf('mail') !== -1} disableRipple/>
                                 </ListItem>
                             </List>
                         }
